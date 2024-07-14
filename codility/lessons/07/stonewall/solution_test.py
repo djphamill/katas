@@ -1,5 +1,5 @@
 from parameterized import parameterized
-from solution import solution
+from solution import solution, cut_out_foundation_brick
 
 TEST_CASES = [
     ("uniform wall of length one", [1], 1),
@@ -12,5 +12,15 @@ TEST_CASES = [
 
 @parameterized.expand(TEST_CASES)
 def test_solution(_, heights, expected):
-    assert solution(heights) == expected
+    actual = solution(heights)
+    assert actual == expected
+
+@parameterized.expand([
+    ("two blocks", [1, 2], [[2]]),
+    ("saw tooth", [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3], [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]),
+    ("base is 50", [60, 70, 50, 70], [[60, 70], [70]]),
+])
+def test_cut_out_foundation_brick(_, heights, expected):
+    actual = cut_out_foundation_brick(heights)
+    assert actual == expected
 
