@@ -18,6 +18,8 @@ def test_solution(_, heights, expected):
 @parameterized.expand([
     ("two blocks", [1, 2], [[2]]),
     ("saw tooth", [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3], [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]),
+    ("ends on minimum height", [1, 2, 2, 3, 2, 1, 1], [[2, 2, 3, 2]]),
+    ("has minimum hieght appear multiple times in middle", [2, 2, 3, 2, 2, 2, 5, 3], [[3], [5, 3]]),
     ("base is 50", [60, 70, 50, 70], [[60, 70], [70]]),
 ])
 def test_cut_out_foundation_brick(_, heights, expected):
